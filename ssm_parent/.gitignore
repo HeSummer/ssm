@@ -1,0 +1,7 @@
+*.bak
+*.sym
+*.jar
+.iml
+.idea
+
+
