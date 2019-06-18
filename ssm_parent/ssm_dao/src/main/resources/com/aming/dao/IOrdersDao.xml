@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aming.dao.IOrdersDao">
+    <resultMap id="Orders" type="com.aming.domain.Orders">
+        <id property="id" column="id"></id>
+        <result property = "orderNum"    column = "orderNum"></result>
+        <result property = "orderTime"   column = "orderTime"></result>
+        <result property = "orderStatus" column = "orderStatus"></result>
+        <result property = "peopleCount" column = "peopleCount"></result>
+        <result property = "peopleCount" column = "peopleCount"></result>
+        <result property = "payType"     column = "payType"></result>
+        <result property = "orderDesc"   column = "orderDesc"></result>
+        <result property = "payType" column="payType"></result>
+        <result property = "payTypeStr" column="payTypeStr"></result>
+        <result property = "orderDesc" column="orderDesc"></result>
+        <association property = "product"     javaType = "com.aming.domain.Product">
+            <result column="id"      property="id"/>
+            <result column="productNum"      property="productNum"/>
+            <result column="productName"      property="productName"/>
+            <result column="cityName"      property="cityName"/>
+            <result column="departureTime"      property="departureTime"/>
+            <result column="departureTimeStr"      property="departureTimeStr"/>
+            <result column="productPrice" property="productPrice"/>
+            <result column="productDesc" property="productDesc"/>
+            <result column="productStatus" property="productStatus"/>
+            <result column="productStatusStr" property="productStatusStr"/>
+        </association>
+
+    </resultMap>
+    <select id="findAll" resultMap="Orders">
+        select o.id,o.ordernum,p.productName,p.productPrice,o.orderTime,o.orderStatus from orders o left join product p on o.productid=p.id
+    </select>
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
